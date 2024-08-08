@@ -33,7 +33,12 @@ $SCRIPT_NAME=$myInvocation.MyCommand.Name
 $AdministratorUserSID="S-1-5-21-*-500"                               #Default SID for Administrator user.
 
 #======== Support Functions
-. .\functions.ps1
+if ( Test-Path functions.ps1 -PathType Leaf ) {
+  . .\functions.ps1
+} else {
+  Write-Host "[ERROR] Missing function.ps1 file."
+  exit 1
+}
 
 #======== Script's Functions
 

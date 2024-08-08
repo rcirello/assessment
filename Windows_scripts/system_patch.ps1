@@ -26,7 +26,12 @@ $LOG_FILE_NAME='patch_log.txt'                                       #Log file
 $SCRIPT_NAME=$myInvocation.MyCommand.Name
 
 #======== Support Functions
-. .\functions.ps1
+if ( Test-Path functions.ps1 -PathType Leaf ) {
+  . .\functions.ps1
+} else {
+  Write-Host "[ERROR] Missing function.ps1 file."
+  exit 1
+}
 
 #======== Script's Functions
 

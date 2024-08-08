@@ -37,7 +37,12 @@ LOG_FILE_NAME='patch_log.txt'                                        #Log file
 SCRIPT_NAME="${0}"
 
 #======== Support Functions
-source functions.sh
+if [ -f functions.sh ]; then
+  source functions.sh
+else
+  echo "[ERROR] Missing function.sh file"
+  exit 1
+fi
 
 #======== Script's own functions
 fn_checkPendingReboot(){

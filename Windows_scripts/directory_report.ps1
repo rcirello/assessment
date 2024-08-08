@@ -24,7 +24,12 @@ $SUPPORTED_OS_VERSIONS= @('Windows 10')                #Comment this line to run
 $REPORT_FILE_NAME='directory_report.txt'                             #Report File
 
 #======== Support Functions
-. .\functions.ps1
+if ( Test-Path functions.ps1 -PathType Leaf ) {
+  . .\functions.ps1
+} else {
+  Write-Host "[ERROR] Missing function.ps1 file."
+  exit 1
+}
 
 #======== Script's Functions
 
